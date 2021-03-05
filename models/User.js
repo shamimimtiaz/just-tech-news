@@ -10,7 +10,7 @@ checkPassword(loginPw) {
   }
 }
 
-// define table columns and configuration
+// define User table columns and configuration
 User.init(
     {
         // TABLE COLUMN DEFINITIONS GO HERE, first define a id column
