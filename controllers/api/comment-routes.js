@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   // expects => {comment_text: "This is the comment", user_id: 1, post_id: 2}
+  if (req.session) { //Wrapping the Sequelize queries in if (req.session) statements ensures that only logged-in users interact with the database.
   Comment.create({
     comment_text: req.body.comment_text,
     user_id: req.session.user_id,
@@ -22,6 +23,7 @@ router.post('/', (req, res) => {
       console.log(err);
       res.status(400).json(err);
     });
+  }
 });
 
 router.delete('/:id', (req, res) => {
